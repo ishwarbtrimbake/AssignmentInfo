@@ -1,4 +1,3 @@
-
 import UIKit
 
 @UIApplicationMain
@@ -12,9 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = UINavigationController(rootViewController: FeedTableViewController())
             window.makeKeyAndVisible()
         }
+        
         return true
     }
-
-
 }
-

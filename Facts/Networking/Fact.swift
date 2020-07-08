@@ -1,13 +1,14 @@
-
 import Moya
 
+///This is network abstraction layer for getting facts.
+///This has been implemented with Moya cocoapod and which works on the top of Alamofire.
 enum FactType {
     case getFacts
 }
 
 extension FactType: TargetType {
     var baseURL: URL {
-        return URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/")!
+        return URL(string: Constants.baseURL)!
     }
     
     var path: String {
@@ -29,7 +30,7 @@ extension FactType: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return nil
     }
 }

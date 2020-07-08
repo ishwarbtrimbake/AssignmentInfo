@@ -1,13 +1,14 @@
-
 import Foundation
 
-// MARK: - Feed
+/// Models for Fact
+
+// MARK: - FactsResponse
 struct FactsResponse: Codable {
     let title: String?
     let rows: [Fact]?
 }
 
-// MARK: - Row
+// MARK: - Fact
 struct Fact: Codable {
     let title, rowDescription: String?
     let imageHref: String?

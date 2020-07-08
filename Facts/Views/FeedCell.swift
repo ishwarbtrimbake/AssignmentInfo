@@ -1,11 +1,15 @@
-
 import UIKit
 import Kingfisher
 import SnapKit
 
+/// This Fact Cell shows each Fact with throughly.
+/// `Kingfisher` pod is used for caching and downloading images
+/// `SnapKit` pod is widely used for programmatic autolayout.
 class FeedCell: UITableViewCell {
     
-    var feed : Fact? {
+    static let identifier = "FeedCell"
+    
+    var feed: Fact? {
         didSet {
             let url = URL(string: feed?.imageHref ?? "")
             let processor = DownsamplingImageProcessor(size: feedImage.bounds.size)
@@ -18,8 +22,7 @@ class FeedCell: UITableViewCell {
                     .scaleFactor(UIScreen.main.scale),
                     .transition(.fade(1)),
                     .cacheOriginalImage
-                ])
-            {
+                ]) {
                 result in
                 switch result {
                 case .success(let value):
@@ -33,7 +36,7 @@ class FeedCell: UITableViewCell {
         }
     }
     
-    private let feedNameLabel : UILabel = {
+    private let feedNameLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
@@ -42,8 +45,7 @@ class FeedCell: UITableViewCell {
         return lbl
     }()
     
-    
-    private let feedDescriptionLabel : UILabel = {
+    private let feedDescriptionLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.font = UIFont.systemFont(ofSize: 16)
@@ -52,7 +54,7 @@ class FeedCell: UITableViewCell {
         return lbl
     }()
     
-    private let feedImage : UIImageView = {
+    private let feedImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.layer.cornerRadius = 7.0
@@ -84,6 +86,4 @@ class FeedCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
-    
 }
